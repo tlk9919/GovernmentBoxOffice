@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="ticket-list">
+    <block wx:for="{{tickets}}" wx:key="id">
+      <view class="ticket-item" bindtap="goToTicketDetail">
+        <text>{{item.title}}</text>
+        <text>{{item.amount}} 元</text>
+        <text>{{item.status}}</text>
+      </view>
+    </block>
+  </view>
+</view>

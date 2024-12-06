@@ -1,0 +1,50 @@
+<view class="login-container">
+  <!-- 背景图 -->
+  <view class="background-image">
+    <image src="/assets/images/login/bg_login.png" mode="aspectFill" />
+  </view>
+
+  <view class="header">
+    <!-- 图标 -->
+    <view class="background-hi">
+      <image src="/assets/images/login/hi.png" mode="aspectFill" />
+    </view>
+    <!-- 欢迎文字 -->
+    <view class="welcome">欢迎登录房票小程序</view>
+  </view>
+
+  <!-- 输入表单 -->
+  <view class="form">
+    <!-- 身份证 -->
+    <view class="form-item">
+      <text>身份证</text>
+      <input type="text" placeholder="请输入身份证号码" bindinput="onIdInput" />
+    </view>
+
+    <!-- 姓名 -->
+    <view class="form-item">
+      <text>姓名</text>
+      <input type="text" placeholder="请输入姓名" bindinput="onNameInput" />
+    </view>
+
+    <!-- 手机号 -->
+    <view class="form-item">
+      <text>手机号</text>
+      <input type="number" placeholder="请输入手机号" bindinput="onPhoneInput" />
+    </view>
+
+    <!-- 验证码部分 -->
+    <view class="form-item">
+      <text>验证码</text>
+      <view class="input-container">
+        <input type="text" placeholder="请输入验证码" bindinput="onCodeInput" />
+        <button class="send-code" bindtap="sendCode">发送验证码</button>
+      </view>
+    </view>
+
+    <!-- 登录按钮 -->
+    <view class="form-btn">
+      <button class="login-btn" bindtap="onLogin">登录</button>
+    </view>
+  </view>
+</view>

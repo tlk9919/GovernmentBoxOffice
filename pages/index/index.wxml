@@ -1,0 +1,30 @@
+<view class="container">
+  <!-- 自定义图片部分 -->
+  <view class="custom-image">
+    <image src="/assets/images/placeholder.jpg" mode="aspectFill" />
+  </view>
+
+  <!-- 搜索框部分 -->
+  <view class="search-section">
+    <input class="search-bar" type="text" placeholder="搜索房源地址" bindinput="onSearch" />
+    <view class="filter">
+      <input type="number" placeholder="房面积" />
+      <input type="text" placeholder="户型" />
+      <input type="number" placeholder="总价" />
+    </view>
+  </view>
+
+  <!-- 房源信息列表 -->
+  <view class="house-list">
+    <block wx:for="{{houses}}" wx:key="id">
+      <view class="house-item" bindtap="goToHouseDetail">
+        <image src="/assets/images/placeholder.jpg" />
+        <view class="house-info">
+          <text>{{item.name}}</text>
+          <text>{{item.address}}</text>
+          <text>{{item.area}}㎡</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,117 @@
+/* 页面容器 */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+}
+/* 背景图片 */
+.background-image {
+  width: 120%;
+  height: 250px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* 背景图在底层 */
+}
+.background-image image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保持图片比例，填充整个容器 */
+}
+/* 父容器，控制纵向排列 */
+.header {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start;
+  width: 100%; 
+}
+/* 图标部分 */
+.background-hi {
+  width: 50px;
+  height: 50px; 
+  display: flex;
+  margin-bottom: 10px;
+}
+.background-hi image {
+  width: 100%; 
+  height: 50px;
+}
+.welcome {
+  font-size: 20px;
+  color: #f3f3f3;
+  margin-bottom: 30px;
+}
+
+/* 表单部分 */
+.form {
+  width: 100%;
+  background: #fff;
+  border-radius: 30px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
+/* 单个表单项 */
+.form-item {
+  margin-bottom: 15px;
+}
+
+.form-item text {
+  display: block;
+  font-size: 14px;
+  color: #333;
+}
+
+input {
+  width: 90%;
+  height: 40px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+/* 验证码部分 */
+.input-container {
+  position: relative; /* 使按钮可以相对输入框定位 */
+  width: 100%; /* 输入框容器的宽度 */
+}
+.input-container input {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box; /* 包括 padding 和 border 在内 */
+}
+/* 按钮样式 */
+.send-code {
+  position: absolute; 
+  right: 0; /* 将按钮定位到输入框的右侧 */
+  top: 25%; 
+  padding: 0 45px; /* 为按钮添加左右内边距 */
+  border: none;
+  color: #ddd;
+  font-size: 15px;
+  background-color: transparent; /* 设置背景为透明 */
+}
+
+.form-btn{
+  width: 100%;
+  margin-top: 20px;
+}
+/* 登录按钮样式 */
+.login-btn {
+  width: 100%;
+  background: #1c91f7;
+  color: white;
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="image-section">
+    <image src="{{house.image}}" mode="aspectFill" />
+  </view>
+  <view class="record-section">
+    <text>备案单价: {{house.price}} 元/㎡</text>
+    <text>备案总价: {{house.totalPrice}} 元</text>
+    <text>户型: {{house.type}}</text>
+  </view>
+  <view class="basic-info-section">
+    <text>所属项目: {{house.project}}</text>
+    <text>开发企业: {{house.developer}}</text>
+    <text>房屋座落: {{house.location}}</text>
+  </view>
+  <view class="house-info-section">
+    <text>楼栋: {{house.building}}</text>
+    <text>实际层号: {{house.floor}}</text>
+    <text>实际房号: {{house.roomNumber}}</text>
+    <text>户型: {{house.type}}</text>
+    <text>实测建筑面积: {{house.measuredArea}} ㎡</text>
+    <text>套内建筑面积: {{house.innerArea}} ㎡</text>
+    <text>状态: {{house.status}}</text>
+    <text>所属区域: {{house.region}}</text>
+  </view>
+</view>
