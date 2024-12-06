@@ -93,7 +93,7 @@ input {
 .send-code {
   position: absolute; 
   right: 0; /* 将按钮定位到输入框的右侧 */
-  top: 25%; 
+  top: 100%; 
   padding: 0 45px; /* 为按钮添加左右内边距 */
   border: none;
   color: #ddd;

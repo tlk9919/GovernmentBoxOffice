@@ -38,7 +38,7 @@
       <text>验证码</text>
       <view class="input-container">
         <input type="text" placeholder="请输入验证码" bindinput="onCodeInput" />
-        <button class="send-code" bindtap="sendCode">发送验证码</button>
+        <button class="send-code"catchtap="sendCode" bindtap="sendCode">    {{isCodeSent ? countdown + '秒后重发' : '发送验证码'}}</button>
       </view>
     </view>
 
