@@ -1,7 +1,0 @@
-<view class="container">
-  <view class="info-section">
-    <image src="/assets/images/placeholder.jpg" class="avatar" />
-    <text>{{phone}}</text>
-  </view>
-  <button bindtap="onLogout">退出登录</button>
-</view>

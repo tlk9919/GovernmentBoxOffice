@@ -1,5 +1,6 @@
-import { sendVerificationCode } from '../../utils/request'; // 根据实际路径调整
-const { login } = require('../../utils/request'); 
+const { sendVerificationCode } = require('../../utils/request');
+const { login } = require('../../utils/request');
+
 Page({
   data: {
     idCard: '',

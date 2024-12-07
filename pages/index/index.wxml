@@ -1,30 +1,82 @@
-<view class="container">
-  <!-- 自定义图片部分 -->
-  <view class="custom-image">
-    <image src="/assets/images/placeholder.jpg" mode="aspectFill" />
+<view class="index-container">
+  <!-- 背景图 -->
+  <view class="background-image">
+    <image src="/assets/images/index/bg_header.png" mode="aspectFill" />
   </view>
 
-  <!-- 搜索框部分 -->
-  <view class="search-section">
-    <input class="search-bar" type="text" placeholder="搜索房源地址" bindinput="onSearch" />
-    <view class="filter">
-      <input type="number" placeholder="房面积" />
-      <input type="text" placeholder="户型" />
-      <input type="number" placeholder="总价" />
+  <!-- 标题和标签 -->
+  <view class="header">
+    <text class="title">品·质·好·房·源</text>
+    <view class="tags">
+      <text class="tag">安全</text>
+      <text class="tag">可靠</text>
+      <text class="tag">有保障</text>
     </view>
   </view>
 
-  <!-- 房源信息列表 -->
+  <!-- 搜索栏 -->
+  <view class="search-container">
+   <!-- 区域选择 -->
+<view class="area-select">
+  <picker mode="selector" range="{{areas}}" bindchange="onAreaSelectChange">
+    <view class="area-text">
+      {{selectedArea||'区域'}}<image class="area-icon" src="/assets/images/index/area-icon.png" /> 
+    </view>
+  </picker>
+</view>
+    <!-- 搜索框 -->
+    <view class="search-box">
+      <input class="search-input" type="text" placeholder="请输入关键词" />
+      <button class="search-btn" bindtap="onSearch">搜索</button>
+    </view>
+  </view>
+
+  <!-- 属性选择 -->
+  <view class="filters">
+ <!-- 面积选择 -->
+<view class="picker-container">
+  <picker mode="selector" range="{{areaRanges}}" bindchange="onAreaRangeSelectChange">
+    <view class="picker">
+      <text>{{selectedAreaRange}}</text>
+      <image class="picker-icon" src="/assets/images/index/area-icon.png" />
+    </view>
+  </picker>
+</view>
+
+<!-- 户型选择 -->
+<picker mode="selector" range="{{houseTypes}}" bindchange="onHouseTypeChange">
+  <view class="picker">
+    {{selectedHouseType || '户型'}}
+    <image class="picker-icon" src="/assets/images/index/area-icon.png" />
+  </view>
+</picker>
+
+<!-- 总价选择 -->
+<picker mode="selector" range="{{prices}}" bindchange="onPriceChange">
+  <view class="picker">
+    {{selectedPrice || '总价'}}
+    <image class="picker-icon" src="/assets/images/index/area-icon.png" />
+  </view>
+</picker>
+</view>
+
+  <!-- 房子列表 -->
   <view class="house-list">
-    <block wx:for="{{houses}}" wx:key="id">
-      <view class="house-item" bindtap="goToHouseDetail">
-        <image src="/assets/images/placeholder.jpg" />
+    <view class="house-item" wx:for="{{houses}}" wx:key="id">
+      <image class="house-image" src="{{item.imageUrl}}" mode="aspectFill" />
+      <view class="house-infos">
+        <text class="house-name">{{item.name}}</text>
+        <text class="house-address">{{item.address}}</text>
         <view class="house-info">
-          <text>{{item.name}}</text>
-          <text>{{item.address}}</text>
-          <text>{{item.area}}㎡</text>
+          房源数量：<text class="bold">{{item.count}}</text>套
+        </view>
+        <view class="house-info">
+          总价：<text class="red-text">{{item.priceRange}}</text>
+        </view>
+        <view class="house-info">
+          面积：<text class="red-text">{{item.areaRange}}</text>
         </view>
       </view>
-    </block>
+    </view>
   </view>
 </view>

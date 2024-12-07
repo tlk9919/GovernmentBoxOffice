@@ -1,62 +1,173 @@
-/**index.wxss**/
-page {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.scrollarea {
-  flex: 1;
-  overflow-y: hidden;
-}
-
-.userinfo {
+.index-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #aaa;
-  width: 80%;
+  padding: 20px;
+  position: relative;
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.background-image {
+  position: relative;
+  width: 120%;
+  height: 250px;
+  z-index: -1; /* 背景图在底层 */
 }
 
-.usermotto {
-  margin-top: 200px;
-}
-
-.avatar-wrapper {
-  padding: 0;
-  width: 56px !important;
-  border-radius: 8px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-.avatar {
-  display: block;
-  width: 56px;
-  height: 56px;
-}
-
-.nickname-wrapper {
-  display: flex;
+.background-image image {
   width: 100%;
-  padding: 16px;
-  box-sizing: border-box;
-  border-top: .5px solid rgba(0, 0, 0, 0.1);
-  border-bottom: .5px solid rgba(0, 0, 0, 0.1);
-  color: black;
+  height: 100%;
+  object-fit: cover; /* 保持图片比例，填充整个容器 */
 }
 
-.nickname-label {
-  width: 105px;
+.header {
+  position: absolute;
+  left: 20px; 
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  z-index: 1;
 }
 
-.nickname-input {
-  flex: 1;
+.title {
+  font-size: 34px;
+  font-weight: bold;
+  margin-bottom: 10px; 
+  border-bottom: 1px solid white; /* 添加白色下边框 */
+}
+
+.tag {
+  margin: 5px 10px;
+  background-color: #2474d4;
+  padding: 5px 8px;
+  border-radius: 10px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center; /* 水平居中 */
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.area-select {
+  margin-right: 10px; /* 区域选择和搜索框之间的间距 */
+}
+
+.area-text {
+  white-space: nowrap; 
+  padding: 8px 12px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.area-icon {
+  width: 10px;  /* 设置图片的大小 */
+  height: 10px;
+  margin-right: 5px;  /* 图片和文字之间的间距 */
+}
+
+.search-box {
+  display: flex;
+  align-items: center; /* 水平排列，垂直居中 */
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%; /* 让父容器占满父元素的宽度 */
+}
+
+.search-input {
+  padding: 8px 15px;
+  border: 2px solid #007bff; /* 蓝色边框 */
+  border-radius: 25px;
+  font-size: 14px;
+  width: 100%; 
+}
+
+.search-btn {
+  width: 10%; 
+  padding: 8px 15px;
+  border: none;
+  background-color: #007bff; /* 按钮背景颜色 */
+  color: white;
+  border-radius: 25px;
+  font-size: 14px;
+}
+.filters {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.transparent-picker {
+  background: transparent;  /* 背景透明 */
+  border: none;  /* 去除边框 */
+}
+.picker {
+  width: 100%;
+  margin: 0 20px; /* 设置间距 */
+  padding: 5px 10px;
+}
+.picker-container text {
+  color: #0c82fc;  /* 修改颜色 */
+}
+
+
+.picker-icon {
+  width: 10px;  
+  height: 10px;  
+  margin-right: 0px;  
+}
+.house-list {
+
+  width: 100%;
+  margin-top: 20px;
+}
+.house-item {
+  display: flex;
+  flex-direction: row;  /* 横向排列 */
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.house-infos {
+  display: flex;
+  flex-direction: column;  /* 垂直排列房子信息 */
+  margin-left: 10px;  /* 可以调整间距 */
+}
+
+.house-image {
+  width: 100%; 
+  height: auto; 
+  transform: scale(0.8);
+  margin-left: -5%; /* 缩小20% */
+}
+
+.house-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.house-address {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.house-info {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px; 
+}
+.bold {
+  font-weight: bold;
+}
+
+.red-text {
+  color: red;
 }
