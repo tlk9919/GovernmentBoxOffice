@@ -99,10 +99,6 @@ try {
 }
 },
 
-
-
-
-
 // 检查房源数据是否为空
 checkHousesAvailability: function(houses) {
   if (!houses || houses.length === 0) {
@@ -114,7 +110,6 @@ checkHousesAvailability: function(houses) {
     });
   }
 },
-
 
     // 更新筛选条件和房源数据
     getFiltersAndHouses: function() {
