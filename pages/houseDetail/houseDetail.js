@@ -1,19 +1,33 @@
+const { getHouseDetails } = require('../../utils/request');
+
 Page({
   data: {
-    house: {}, // 房源详情
+    houseDetail: {},  // 房源详情数据
+    loading: true,  // 加载状态
   },
 
-  onLoad(options) {
-    const { id } = options;
-    if (id) {
-      wx.request({
-        url: `http://localhost:3000/api/houses/${id}`,
-        method: 'GET',
-        success: (res) => {
-          if (res.statusCode === 200) {
-            this.setData({ house: res.data });
-          }
-        },
+  // 页面加载时调用的函数
+  onLoad: function (options) {
+    console.log(options.id);
+    // 使用 this 调用 loadHouseDetails
+    this.loadHouseDetails(options.id);
+  },
+
+  // 获取房源详情的函数
+  loadHouseDetails: async function (houseId) {
+    this.setData({ loading: true });  // 显示加载中状态
+
+    try {
+      const houseDetail = await getHouseDetails(houseId);  // 请求房源详情数据
+      this.setData({
+        houseDetail: houseDetail,  // 更新房源详情数据
+        loading: false,  // 隐藏加载中状态
+      });
+    } catch (error) {
+      this.setData({ loading: false });  // 隐藏加载中状态
+      wx.showToast({
+        title: '加载失败，请重试',
+        icon: 'none',
       });
     }
   },

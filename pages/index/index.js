@@ -62,6 +62,15 @@ getFilters: async function () {
       }
     },
 
+      // 跳转到房源详情页面
+  onHouseClick: function (e) {
+    const houseId = e.currentTarget.dataset.id;  // 获取当前点击房源的ID
+    wx.navigateTo({
+      url: `/pages/houseDetail/houseDetail?id=${houseId}`,  // 跳转并传递房源ID
+    });
+  },
+
+
 // 获取带筛选条件的房源数据
 getHousesWithFilters: async function(){
 // 1. 从当前页面数据中获取筛选条件

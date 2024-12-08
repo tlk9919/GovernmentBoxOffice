@@ -5,7 +5,8 @@
     "pages/ticket/ticket",
     "pages/profile/profile",
     "pages/houseDetail/houseDetail",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/test/test"
 
   ],
   "window": {

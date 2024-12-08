@@ -62,22 +62,23 @@
 
   <!-- 房子列表 -->
   <view class="house-list">
-    <view class="house-item" wx:for="{{houses}}" wx:key="id">
-      <image class="house-image" src="{{item.imageUrl}}" mode="aspectFill" />
-      <view class="house-infos">
-        <text class="house-name">{{item.name}}</text>
-        <text class="house-address">{{item.address}}</text>
-        <view class="house-info">
-          房源数量：<text class="bold">{{item.count}}</text>套
-        </view>
-        <view class="house-info">
-          总价：<text class="red-text">{{item.priceRange}}</text>
-        </view>
-        <view class="house-info">
-          面积：<text class="red-text">{{item.areaRange}}</text>
-        </view>
+  <view class="house-item" wx:for="{{houses}}" wx:key="id" data-id="{{item.id}}" bindtap="onHouseClick">
+    <image class="house-image" src="{{item.imageUrl}}" mode="aspectFill" />
+    <view class="house-infos">
+      <text class="house-name">{{item.name}}</text>
+      <text class="house-address">{{item.address}}</text>
+      <view class="house-info">
+        房源数量：<text class="bold">{{item.count}}</text>套
+      </view>
+      <view class="house-info">
+        总价：<text class="red-text">{{item.priceRange}}</text>
+      </view>
+      <view class="house-info">
+        面积：<text class="red-text">{{item.areaRange}}</text>
       </view>
     </view>
   </view>
+</view>
+
   
 </view>

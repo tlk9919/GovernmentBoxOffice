@@ -1,3 +1,5 @@
+
+
 const BASE_URL = 'http://localhost:5000/api'; // 后端服务器地址
 
 // 发送验证码
@@ -142,11 +144,42 @@ async function getHousesCondition(filters) {
     throw new Error(error.message || '请求房源数据失败');
   }
 }
+//获取房源详情
+async function getHouseDetails(houseId){
+  //获取请求
+ try {
+  const res =await new Promise((resolve,reject)=>{
+    wx.request({
+      url: `${BASE_URL}/houseDetail/${houseId}`,
+      method:'GET',
+      success:(response)=>{
+        resolve(response)
+      },
+      fail:(err)=>{
+        reject(err)
+      }
+    })
+  })
+  //请求成功
+  if(res.statusCode==200&&res.data.success){
+    return res.data
+  }
+  else {
+    throw new Error('房源数据加载失败');
+}
+ } catch (error) {
+  throw new Error(error.message ||'房源数据加载失败');
+ }
+}
+
+module.exports = { getHouseDetails };
+
 
 module.exports = {
   login,
   sendVerificationCode,
   getHouses,
   getHousesCondition,
-  getFilters
+  getFilters,
+  getHouseDetails
 };
