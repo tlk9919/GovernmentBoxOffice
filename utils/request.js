@@ -62,17 +62,15 @@ async function login(data) {
     throw new Error(error.message || '网络错误，请稍后重试');
   }
 }
-
-
-// 获取房源数据
-async function getHouses() {
+//筛选房源条件
+async function getFilters() {
   try {
-    const res = await new Promise((resolve, reject) => {
+   await new Promise((resolve, reject) => {
       wx.request({
-        url: `${BASE_URL}/houses`,  // 假设这是房源的接口地址
+        url: `${BASE_URL}/filters`, 
         method: 'GET',
         success: (response) => {
-          resolve(response);  // 请求成功，返回响应数据
+          resolve(response.data.filters);  // 请求成功，返回响应数据
         },
         fail: (err) => {
           reject(err);  // 请求失败，返回错误信息
@@ -80,6 +78,34 @@ async function getHouses() {
       });
     });
 
+    // 判定请求是否成功
+  //   if (res.statusCode === 200 && res.data.success) {
+  //     return res.data.filters;  // 返回筛选条件数据
+  //   } else {
+  //     throw new Error(res.data.message || '获取筛选条件失败');
+  //   }
+  } 
+  catch (error) {
+    throw new Error(error.message || '请求筛选条件失败');
+  }
+}
+
+
+// 获取房源数据
+async function getHouses() {
+  try {
+    const res = await new Promise((resolve, reject) => {
+      wx.request({
+        url: `${BASE_URL}/houses`,  
+        method: 'GET',
+        success: (response) => {
+          resolve(response);  
+        },
+        fail: (err) => {
+          reject(err);  
+        },
+      });
+    });
     // 判定请求是否成功
     if (res.statusCode === 200 && res.data.success) {
       return res.data.houses;  // 返回房源数据
@@ -117,9 +143,11 @@ async function getHousesCondition(filters) {
     throw new Error(error.message || '请求房源数据失败');
   }
 }
+
 module.exports = {
-  login: login,
-  sendVerificationCode: sendVerificationCode,  // 导出发送验证码的函数
+  login,
+  sendVerificationCode,
   getHouses,
-  getHousesCondition
+  getHousesCondition,
+  getFilters
 };

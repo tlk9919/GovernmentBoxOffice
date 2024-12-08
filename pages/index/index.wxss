@@ -135,6 +135,7 @@
 }
 
 .house-infos {
+  width: 65%; 
   display: flex;
   flex-direction: column;  /* 垂直排列房子信息 */
   margin-left: 10px;  /* 可以调整间距 */
