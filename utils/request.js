@@ -65,12 +65,12 @@ async function login(data) {
 //筛选房源条件
 async function getFilters() {
   try {
-   await new Promise((resolve, reject) => {
+    const res = await new Promise((resolve, reject) => {
       wx.request({
         url: `${BASE_URL}/filters`, 
         method: 'GET',
         success: (response) => {
-          resolve(response.data.filters);  // 请求成功，返回响应数据
+          resolve(response);  // 请求成功，返回响应数据
         },
         fail: (err) => {
           reject(err);  // 请求失败，返回错误信息
@@ -79,13 +79,12 @@ async function getFilters() {
     });
 
     // 判定请求是否成功
-  //   if (res.statusCode === 200 && res.data.success) {
-  //     return res.data.filters;  // 返回筛选条件数据
-  //   } else {
-  //     throw new Error(res.data.message || '获取筛选条件失败');
-  //   }
-  } 
-  catch (error) {
+    if (res.statusCode === 200 && res.data.success) {
+      return res.data.filters;  // 返回筛选条件数据
+    } else {
+      throw new Error(res.data.message || '获取筛选条件失败');
+    }
+  } catch (error) {
     throw new Error(error.message || '请求筛选条件失败');
   }
 }

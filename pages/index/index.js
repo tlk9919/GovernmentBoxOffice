@@ -40,67 +40,68 @@ getFilters: async function () {
     console.error('获取筛选条件失败:', error.message || error);
   }
 },
-
-
-    // 获取房源数据
-    getHouses: async function() {
+    // 获取房源
+    getHouses: async function(){
+        // 1. 调用外部函数获取房源数据
       try {
-        const houses = await getHouses();  // 调用服务获取房源数据
-        if (houses) {  // 确保返回的数据不是 undefined 或 null
+        const houses=await getHouses()
+        // 2. 判断是否成功获取到房源数据
+        if(houses){
+             // 3. 如果获取到了房源数据，更新数据到视图
           this.setData({
-            houses: houses,
-          });
-        } else {
-          console.error('获取房源数据为空');
-          this.setData({
-            houses: [],  // 如果没有房源数据，设置为空数组
-          });
+            houses:houses
+          })
         }
+          // 4. 如果没有获取到房源数据
+          else{
+           console.error('获取房源数据为空');
+          }
+     // 输出错误信息，表示没有返回房源数据
       } catch (error) {
-        console.error('获取房源数据失败', error);
-        this.setData({
-          houses: [],  // 如果发生错误，确保 houses 是空数组
-        });
+        console.error('获取房源数据为空',error);
       }
     },
 
- // 获取带筛选条件的房源数据
- getHousesWithFilters: async function() {
-  const filters = {
-    area: this.data.selectedArea,
-    areaRange: this.data.selectedAreaRange,
-    houseType: this.data.selectedHouseType,
-    price: this.data.selectedPrice
-  };
-
-  console.log('传递的筛选条件:', filters);  // 打印传递的筛选条件
-
-  try {
-    // 调用 getHousesCondition 函数并传递筛选条件
-    const houses = await getHousesCondition(filters);  // 使用 getHousesCondition 而不是 getHouses
-    console.log('房源数据:', houses);  // 打印房源数据
-
-    this.setData({
-      houses: houses,
-    });
-
-    // 检查房源数据，如果没有房源则提示用户
-    this.checkHousesAvailability(houses);
-  } catch (error) {
-    console.error('获取房源数据失败:', error);
-    this.setData({
-      houses: [],  // 如果发生错误，确保 houses 是空数组
-    });
-
-    // 显示错误的弹窗
-    wx.showModal({
-      title: '错误',
-      content: '获取房源数据失败，请稍后重试',
-      showCancel: false,  // 不显示取消按钮
-      confirmText: '确定',
-    });
+// 获取带筛选条件的房源数据
+getHousesWithFilters: async function(){
+// 1. 从当前页面数据中获取筛选条件
+try {
+  const filters ={
+    area: this.data.selectedArea,        // 获取选定的区域
+    areaRange: this.data.selectedAreaRange, // 获取选定的面积范围
+    houseType: this.data.selectedHouseType, // 获取选定的房屋类型
+    price: this.data.selectedPrice       // 获取选定的价格
   }
+  // 2. 打印出筛选条件
+  console.log('传递的筛选条件:', filters)
+  // 3. 调用接口函数获取带有筛选条件的房源数据
+  const houses=await getHousesCondition(filters)
+  // 4. 如果获取到房源数据，则更新页面数据
+  if(houses){
+    this.setData({
+      houses,
+    })
+  }
+  else{
+    console.error('获取房源数据为空',error);
+  }
+   // 5. 检查房源数据的有效性
+  this.checkHousesAvailability(houses)
+      // 如果没有房源数据，则提示用户房源不可用
+} catch (error) {
+  console.error('获取房源数据为空',error);
+  wx.showModal({
+    title: '错误',
+    content: '获取房源数据失败，请稍后重试', // 提示用户重试
+    showCancel: false,  // 不显示取消按钮
+    confirmText: '确定', // 只有“确定”按钮
+  });
+}
 },
+
+
+
+
 
 // 检查房源数据是否为空
 checkHousesAvailability: function(houses) {
@@ -108,7 +109,7 @@ checkHousesAvailability: function(houses) {
     wx.showModal({
       title: '提示',
       content: '没有找到符合条件的房源',
-      showCancel: false,  // 不显示取消按钮
+      showCancel: false, 
       confirmText: '确定',
     });
   }
