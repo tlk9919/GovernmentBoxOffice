@@ -25,14 +25,27 @@
   align-items: center;
   justify-content: center;
   width: 90%;
-  gap: 40px; 
   box-shadow: 0 0px 10px rgb(6, 125, 252);
 }
 .house-info .info-house-item {
-  color: white; /* 字体颜色为白色 */
-  text-align: center; /* 文本居中 */
+  color: #1283fc;
   padding: 5px;
-  font-size: 14px; /* 字体大小 */
+  font-size: 20px; /* 字体大小 */
+}
+.house-info .info-house-item .house-label {
+  white-space: nowrap;    /* 防止换行 */
+  overflow: hidden;       /* 超出部分隐藏 */
+  text-overflow: ellipsis; /* 使用省略号表示溢出文本 */
+}
+.info-house-item.value{
+  display: flex;
+  justify-content: center;
+}
+.house-info .info-house-item .value {
+  flex: 1;                /* 让 value 部分占满剩余空间 */
+  white-space: nowrap;    /* 防止换行 */
+  overflow: hidden;       /* 超出部分隐藏 */
+  text-overflow: ellipsis; /* 使用省略号表示溢出文本 */
 }
 .basic-info {
   margin-bottom: 10px;
@@ -43,10 +56,15 @@
   border: 2px solid #f0f4fc;
   margin-top: -20px; 
 }
-
+.basic-info .info-item .label {
+  width: 120px;
+  white-space: nowrap; 
+  overflow: hidden; /* 超出部分隐藏 */
+  text-overflow: ellipsis; /* 使用省略号显示溢出文本 */
+}
 .info-header {
   display: flex;
-  align-items: center; /* 垂直居中 */
+  align-items: center; 
   gap: 10px; /* 图片和标题之间的间距 */
   background-color:#ecf4fc;
   width: 100%;
@@ -89,6 +107,8 @@
   width: 100%;
   gap: 10px; 
 }
+
+
 .label {
   color: #808080; /* 设置灰色 */
 }

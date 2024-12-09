@@ -2,20 +2,20 @@
 <view class="container">
 <!-- 背景图 -->
 <view class="background-image">
-    <image src="/assets/images/houseDetail/bg_header.png" mode="aspectFill" />
+    <image src="{{houseDetail.imageUrl}}" mode="aspectFill" />
   </view>
 <!-- 简单介绍 -->
 <view class="house-info">
     <view class="info-house-item">
-      <view class="value">{{houseDetails.price}}元</view>
-      <view class="house-label">备案单价</view>
+      <view class="value">{{houseDetail.RecordPrice}}</view>
+      <view class="house-label">备案单价(m²)</view>
     </view>
     <view class="info-house-item">
-      <view class="value">{{houseDetails.totalPrice}}元</view>
-      <view class="house-label">备案总价</view>
+      <view class="value">{{houseDetail.RecordTotalPrice}}</view>
+      <view class="house-label">备案总价(m²)</view>
     </view>
     <view class="info-house-item">
-      <view class="value">{{houseDetails.layout}}型</view>
+      <view class="value">{{houseDetail.houseType}}</view>
       <view class="house-label">户型</view>
     </view>
   </view>
@@ -33,15 +33,15 @@
      <view class="info-details">
       <view class="info-item">
         <view class="label">所属项目：</view>
-        <view class="value">{{houseDetails.project}}1</view>
+        <view class="value">{{houseDetail.project}}</view>
       </view>
       <view class="info-item">
         <view class="label">开发企业：</view>
-        <view class="value">{{houseDetails.developer}}1</view>
+        <view class="value">{{houseDetail.developer}}</view>
       </view>
       <view class="info-item">
         <view class="label">房屋座落：</view>
-        <view class="value">{{houseDetails.location}}1</view>
+        <view class="value">{{houseDetail.location}}</view>
       </view>
     </view>
 </view>
@@ -58,31 +58,31 @@
   <view class="info-details">
     <view class="info-item">
       <view class="label">楼栋：</view>
-      <view class="value">{{houseDetails.building}}1</view>
+      <view class="value">{{houseDetail.building}}</view>
     </view>
     <view class="info-item">
       <view class="label">实际层号：</view>
-      <view class="value">{{houseDetails.floor}}1</view>
+      <view class="value">{{houseDetail.floor}}</view>
     </view>
     <view class="info-item">
       <view class="label">实际房号：</view>
-      <view class="value">{{houseDetails.roomNumber}}1</view>
+      <view class="value">{{houseDetail.roomNumber}}</view>
     </view>
     <view class="info-item">
       <view class="label">实测建筑面积：</view>
-      <view class="value">{{houseDetails.measuredArea}}㎡1</view>
+      <view class="value">{{houseDetail.measuredArea}}㎡</view>
     </view>
     <view class="info-item">
       <view class="label">套内建筑面积：</view>
-      <view class="value">{{houseDetails.innerArea}}㎡1</view>
+      <view class="value">{{houseDetail.innerArea}}㎡</view>
     </view>
     <view class="info-item">
       <view class="label">状态：</view>
-      <view class="value">{{houseDetails.status}}1</view>
+      <view class="value">{{houseDetail.status}}</view>
     </view>
     <view class="info-item">
       <view class="label">所属区域：</view>
-      <view class="value">{{houseDetails.region}}1</view>
+      <view class="value">{{houseDetail.region}}</view>
     </view>
   </view>
 </view>

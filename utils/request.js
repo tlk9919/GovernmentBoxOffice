@@ -91,7 +91,6 @@ async function getFilters() {
   }
 }
 
-
 // 获取房源数据
 async function getHouses() {
   try {
@@ -147,33 +146,34 @@ async function getHousesCondition(filters) {
 //获取房源详情
 async function getHouseDetails(houseId){
   //获取请求
+  console.log('请求的房源ID:', houseId);
  try {
   const res =await new Promise((resolve,reject)=>{
     wx.request({
       url: `${BASE_URL}/houseDetail/${houseId}`,
       method:'GET',
       success:(response)=>{
+        console.log('请求成功的响应:', response.data);
         resolve(response)
       },
       fail:(err)=>{
-        reject(err)
+        reject(new Error('请求失败1，请重试'));  
       }
     })
   })
   //请求成功
-  if(res.statusCode==200&&res.data.success){
+  if(res.statusCode==200){
+    console.log('返回的数据:', res.data)
     return res.data
   }
   else {
+    console.log('响应错误状态:', res.statusCode);
     throw new Error('房源数据加载失败');
 }
  } catch (error) {
   throw new Error(error.message ||'房源数据加载失败');
  }
 }
-
-module.exports = { getHouseDetails };
-
 
 module.exports = {
   login,

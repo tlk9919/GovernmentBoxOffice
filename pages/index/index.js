@@ -40,6 +40,7 @@ getFilters: async function () {
     console.error('获取筛选条件失败:', error.message || error);
   }
 },
+
     // 获取房源
     getHouses: async function(){
         // 1. 调用外部函数获取房源数据
@@ -51,6 +52,7 @@ getFilters: async function () {
           this.setData({
             houses:houses
           })
+          console.log('获取的房源为',houses)
         }
           // 4. 如果没有获取到房源数据
           else{

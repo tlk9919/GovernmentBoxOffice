@@ -12,15 +12,15 @@ Page({
     // 使用 this 调用 loadHouseDetails
     this.loadHouseDetails(options.id);
   },
-
+  
   // 获取房源详情的函数
   loadHouseDetails: async function (houseId) {
     this.setData({ loading: true });  // 显示加载中状态
-
     try {
       const houseDetail = await getHouseDetails(houseId);  // 请求房源详情数据
+      console.log('获取的房源详情:', houseDetail); 
       this.setData({
-        houseDetail: houseDetail,  // 更新房源详情数据
+        houseDetail: houseDetail.house,
         loading: false,  // 隐藏加载中状态
       });
     } catch (error) {

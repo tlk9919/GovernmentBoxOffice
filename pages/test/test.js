@@ -1,28 +1,23 @@
-// Page({
-//   data: {
-//     houseDetails: {}  // 存放房源详情数据
-//   },
+const express = require('express');
+const { allHouses, filters } = require('../models/houseModel');  // 引入模型中的数据
+const app = express();
+const port = 3000;
+const cors = require('cors');
+app.use(cors());
 
-//   onLoad(options) {
-//     const houseId = options.id;  // 获取房源的id，假设从跳转时传递了id
-//     this.getHouseDetails(houseId);  // 调用获取房源详情的方法
-//   },
+// 获取房源详情的接口
+app.get('/api/houseDetail/:id', (req, res) => {
+    const houseId = parseInt(req.params.id);  // 获取URL中的房源ID
+    const house = allHouses.find((h) => { return h.id === houseId; });  // 查找对应的房源
+    console.log('查到的房源有',house);
+    if (house) {
+        res.status(200).json(house);  // 返回房源详情数据
+    } else {
+        res.status(404).json({ message: '房源未找到' });  // 房源不存在时返回404错误
+    }
+});
 
-//   // 获取房源详情数据
-//   getHouseDetails(houseId) {
-//     wx.request({
-//       url: `http://localhost:3000/api/houseDetail/${houseId}`,  // 后端 API 地址
-//       method: 'GET',
-//       success: (res) => {
-//         if (res.statusCode === 200) {
-//           this.setData({ houseDetails: res.data });  // 设置房源详情数据
-//         } else {
-//           wx.showToast({ title: '房源数据加载失败', icon: 'none' });
-//         }
-//       },
-//       fail: () => {
-//         wx.showToast({ title: '请求失败，请重试', icon: 'none' });
-//       }
-//     });
-//   }
-// });
+// 启动服务器
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+});
