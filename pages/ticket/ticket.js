@@ -33,7 +33,7 @@ Page({
         title: '获取房票失败',
         icon:'error'
       })
-      throw new Error("服务器错误，获取房票失败")
+      throw new Error("服务器错误，获取房票失败",error)
     }
   },
   

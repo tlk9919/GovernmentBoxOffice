@@ -179,7 +179,7 @@ async function getTicket(){
   try {
     const res= await new Promise((resolve,reject)=>{
       wx.request({
-        url: 'http://localhost:3000/api/ticket',
+        url: `${BASE_URL}/ticket`,
         method:'GET',
         success:(response)=>{
           resolve(response)
