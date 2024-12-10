@@ -1,4 +1,5 @@
 
+
 const BASE_URL = 'http://localhost:5000/api'; // 后端服务器地址
 
 // 发送验证码
@@ -202,7 +203,40 @@ async function getTicket(){
     throw new Error(errr.message)
   }
 }
+//获取房票详情
+async function getTicketDetail(ticketId){
+  //获取请求
+  console.log('获取到的房票id',ticketId)
+try {
+  const res= await new Promise((resolve,reject)=>{
+    wx.request({
+      url:  `${BASE_URL}/ticketDetail/${ticketId}`, 
+      method:'GET',
+      success:(response)=>{
+        console.log('获取到的响应:', response);
+       resolve(response)
+     },
+     fail:(err)=>{
+      console.log('请求失败:', err);
+       reject(err)
+     }
+    })
+   })
+   if(res.statusCode==200){
+    console.log('请求成功的数',res.data)
+    return res.data
+  }
+  else{
+   console.log('响应错误状态:', res.statusCode);
+    console('获取房票详情失败')
+  }
+} catch (error) {
+  throw new Error(error.message ||'房源票详情加载失败');
+}
+  //请求成功
+  //请求失败
 
+}
 module.exports = {
   login,
   sendVerificationCode,
@@ -210,5 +244,6 @@ module.exports = {
   getHousesCondition,
   getFilters,
   getHouseDetails,
-  getTicket
+  getTicket,
+  getTicketDetail
 };

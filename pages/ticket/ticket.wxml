@@ -1,4 +1,4 @@
-<view class="ticket-item" wx:for="{{tickets}}" wx:key="id">
+<view class="ticket-item" wx:for="{{tickets}}" wx:key="id" data-id="{{item.id}}" bindtap="onTicketClick">
   <view class="container"  style="background-color: {{item.ContainerBackgroundColor}}">
     <!-- 第一部分: 征收单位 -->
     <view class="info-item-unit" style="color: {{item.CollectionUnitColor}}">

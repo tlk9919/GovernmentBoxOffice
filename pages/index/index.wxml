@@ -1,84 +1,48 @@
-<view class="index-container">
-  <!-- 背景图 -->
-  <view class="background-image">
-    <image src="/assets/images/index/bg_header.png" mode="aspectFill" />
-  </view>
-
-  <!-- 标题和标签 -->
-  <view class="header">
-    <text class="title">品·质·好·房·源</text>
-    <view class="tags">
-      <text class="tag">安全</text>
-      <text class="tag">可靠</text>
-      <text class="tag">有保障</text>
-    </view>
-  </view>
-
-  <!-- 搜索栏 -->
-  <view class="search-container">
-   <!-- 区域选择 -->
-<view class="area-select">
-  <picker mode="selector" range="{{areas}}" bindchange="onAreaSelectChange">
-    <view class="area-text">
-      {{selectedArea||'区域'}}<image class="area-icon" src="/assets/images/index/area-icon.png" /> 
-    </view>
-  </picker>
-</view>
-    <!-- 搜索框 -->
-    <view class="search-box">
-      <input class="search-input" type="text" placeholder="请输入关键词" />
-      <button class="search-btn" bindtap="onSearch">搜索</button>
-    </view>
-  </view>
-
-  <!-- 属性选择 -->
-  <view class="filters">
- <!-- 面积选择 -->
-<view class="picker-container">
-  <picker mode="selector" range="{{areaRanges}}" bindchange="onAreaRangeSelectChange">
-    <view class="picker">
-      <text>{{selectedAreaRange}}</text>
-      <image class="picker-icon" src="/assets/images/index/area-icon.png" />
-    </view>
-  </picker>
-</view>
-
-<!-- 户型选择 -->
-<picker mode="selector" range="{{houseTypes}}" bindchange="onHouseTypeChange">
-  <view class="picker">
-    {{selectedHouseType || '户型'}}
-    <image class="picker-icon" src="/assets/images/index/area-icon.png" />
-  </view>
-</picker>
-
-<!-- 总价选择 -->
-<picker mode="selector" range="{{prices}}" bindchange="onPriceChange">
-  <view class="picker">
-    {{selectedPrice || '总价'}}
-    <image class="picker-icon" src="/assets/images/index/area-icon.png" />
-  </view>
-</picker>
-</view>
-
-  <!-- 房子列表 -->
-  <view class="house-list">
-  <view class="house-item" wx:for="{{houses}}" wx:key="id" data-id="{{item.id}}" bindtap="onHouseClick">
-    <image class="house-image" src="{{item.imageUrl}}" mode="aspectFill" />
-    <view class="house-infos">
-      <text class="house-name">{{item.name}}</text>
-      <text class="house-address">{{item.address}}</text>
-      <view class="house-info">
-        房源数量：<text class="bold">{{item.count}}</text>套
-      </view>
-      <view class="house-info">
-        总价：<text class="red-text">{{item.priceRange}}</text>
-      </view>
-      <view class="house-info">
-        面积：<text class="red-text">{{item.areaRange}}</text>
-      </view>
-    </view>
-  </view>
-</view>
-
+<view class="container">
+  <view class="divider"></view>
   
+  <!-- 房票信息 -->
+  <view class="ticket-info">
+    <view class="info-item">
+      <text class="label">房票标识码: </text>
+      <text class="value">{{ticket.ticketCode}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">征收单位: </text>
+      <text class="value">{{ticket.collectionUnit}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">征收批次: </text>
+      <text class="value">{{ticket.collectionBatch}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">征收协议编号: </text>
+      <text class="value">{{ticket.agreementNumber}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">房票总额（元）: </text>
+      <text class="value">{{ticket.totalAmount}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">房票使用/兑付有效期限: </text>
+      <text class="value">{{ticket.validityPeriod}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">出票日期: </text>
+      <text class="value">{{ticket.issueDate}}</text>
+    </view>
+
+    <!-- 房票状态图片 -->
+    <view class="info-item">
+      <image src="{{ticket.statusImage}}" />
+    </view>
+  </view>
+
+  <view class="dividing-line"></view>
+
+  <!-- 二维码部分 -->
+  <view class="ma-code">
+    <image src="{{ticket.qrcodeUrl}}" mode="aspectFit"></image>
+    <text>长按扫描二维码，可以核验房票当前信息</text>
+  </view>
 </view>

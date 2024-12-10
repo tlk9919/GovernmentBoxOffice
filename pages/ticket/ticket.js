@@ -79,5 +79,15 @@ Page({
     if (status === '已使用') {
       return '#b0b0b0'; // 灰色文字
     }
-  }
+  },
+      // 跳转到房票详情页面
+      onTicketClick: function (e) {
+        const ticketId = e.currentTarget.dataset.id;  // 获取当前点击房票的ID
+        console.log('获取的房票id',ticketId)
+        wx.navigateTo({
+          url: `/pages/ticketDetail/ticketDetail?id=${ticketId}`,  // 跳转并传递房票ID
+        });
+      },
+    
+  
 });

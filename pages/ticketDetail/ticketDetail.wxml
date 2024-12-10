@@ -1,42 +1,41 @@
-
 <view class="container">
   <view class="divider"></view>
   <view class="ticket-info">
     <view class="info-item">
       <text class="label">房票标识码: </text>
-      <text class="value">{{ticketCode}}</text>
+      <text class="value">{{ticket.ticketCode}}</text>
     </view>
     <view class="info-item">
       <text class="label">征收单位: </text>
-      <text class="value">{{collectionUnit}}</text>
+      <text class="value">{{ticket.collectionUnit}}</text>
     </view>
     <view class="info-item">
       <text class="label">征收批次: </text>
-      <text class="value">{{collectionBatch}}</text>
+      <text class="value">{{ticket.collectionBatch}}</text>
     </view>
     <view class="info-item">
       <text class="label">征收协议编号: </text>
-      <text class="value">{{agreementNumber}}</text>
+      <text class="value">{{ticket.agreementNumber}}</text>
     </view>
     <view class="info-item">
       <text class="label">房票总额（元）: </text>
-      <text class="value">{{totalAmount}}</text>
+      <text class="value">{{ticket.totalAmount}}</text>
     </view>
     <view class="info-item">
       <text class="label">房票使用/兑付有效期限: </text>
-      <text class="value">{{validityPeriod}}</text>
+      <text class="value">{{ticket.validityPeriod}}</text>
     </view>
     <view class="info-item">
       <text class="label">出票日期: </text>
-      <text class="value">{{issueDate}}</text>
+      <text class="value">{{ticket.issueDate}}</text>
     </view>
     <view class="info-item">
-      <image src="/assets/images/ticketDetail/icon_used.png" />
+      <image src="{{ticket.statusImage}}" />
     </view>
   </view>
   <view class="dividing-line"></view>
   <view class="ma-code">
-    <image src="/image/ma1.png" mode="aspectFit"></image>
+    <image src="{{ticket.qrcodeUrl}}" mode="aspectFit"></image>
     <text>长按扫描二维码，可以核验房票当前信息</text>
   </view>
 </view>
