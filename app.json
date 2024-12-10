@@ -6,6 +6,7 @@
     "pages/profile/profile",
     "pages/houseDetail/houseDetail",
     "pages/login/login",
+    "pages/ticketDetail/ticketDetail",
     "pages/test/test"
 
   ],

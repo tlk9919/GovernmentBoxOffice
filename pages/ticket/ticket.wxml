@@ -1,0 +1,30 @@
+<view class="ticket-item" wx:for="{{tickets}}" wx:key="id">
+  <view class="container"  style="background-color: {{item.ContainerBackgroundColor}}">
+    <!-- 第一部分: 征收单位 -->
+    <view class="info-item-unit" style="color: {{item.CollectionUnitColor}}">
+      <text class="label">征收单位:</text>
+      <text class="value" >{{item.collectionUnit}}</text>
+    </view>
+    
+    <view class="ticket-info" style="background-color: {{item.DetailItemColor}};">
+      <!-- 状态 -->
+      <view class="status-item" style="background-color:{{item.StatusItemBackgroundColor}};">
+        <text class="value" style="color:{{item.ValueItemColor}}" >{{item.status}}</text>
+      </view>   
+      
+      <view class="details" >
+        <!-- 金额 -->
+        <view class="amount-item" style="background-color: {{item.AmountItemBackgroundColor}};">
+          <text class="value" style="color:{{item.ValueItemColor}}" >￥{{item.amount}}</text>
+          <text class="label" style="color:{{item.labelItemColor}}" >金额</text>  
+        </view>
+
+        <!-- 房票使用/兑付有效期 -->
+        <view class="period-item">
+          <text class="label"  style="color:{{item.labelItemColor}}" >房票使用/兑付有效期:</text>
+          <text class="value"  style="color:{{item.ValueItemColor}}" >{{item.validFrom}} - {{item.validTo}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,81 @@
+
+page {
+  background: linear-gradient(to bottom, #57adf3, #f9f9f9); 
+  min-height: 100vh; 
+  display: flex; 
+  flex-direction: column; 
+}
+.container {
+  padding: 20px;
+  position: relative;
+}
+.divider {
+  width: 350px;
+  height: 15px;
+  position: absolute;
+  top: 3px;
+  background-color: #2678f1;
+  border-radius: 10px;
+  margin: 20px;
+}
+.ticket-info {
+  width: 300px;
+  margin-top: 10px;
+  background-color: white;
+  padding: 12px;
+  border-radius: 20px;
+  z-index: 2;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.info-item .label {
+  color: rgb(156, 154, 154);
+  font-weight: bold;
+}
+.value {
+  color: black;
+}
+.info-item image{
+  margin-left: 210px;
+  width: 100px;
+  height: 85px;
+}
+.info-item text {
+  font-size: 16px;
+}
+.dividing-line{
+  width: 295px;
+  height: 2px;
+  position: absolute;
+  bottom:185px;
+  background-color: #c0c0c0;
+  border-radius: 10px;
+  margin: 20px;
+  z-index: 2;
+}
+.ma-code {
+  position: relative;
+  display: flex;
+  width: 325px;
+  height: 185px;
+  border-radius: 20px;
+  background-color: white;
+}
+.ma-code text{
+position: absolute;
+margin-top: 150px;
+margin-left: 25px;
+font-size: 15px;
+color: rgb(187, 187, 187);
+}
+.ma-code image {
+  margin-top: 20px;
+  margin-left: 105px;
+  width: 120px;
+  height: 120px;
+}
