@@ -1,5 +1,3 @@
-const { resolve } = require("path");
-
 
 const BASE_URL = 'http://localhost:5000/api'; // 后端服务器地址
 
@@ -176,34 +174,34 @@ async function getHouseDetails(houseId){
  }
 }
 //获取房票
-// async function getTicket(){
-//   //获取请求
-//   try {
-//     const res= await new Promise((resolve,reject)=>{
-//       wx.request({
-//         url: 'http://localhost:3000/api/ticket',
-//         method:'GET',
-//         success:(response)=>{
-//           resolve(response)
-//         },
-//         fail:(err)={
-//           reject(err)
-//         }
-//       })
-//     })
-//     //成功
-//     if(res.statusCode==200){
-//       return res.data
-//     }
-//     //失败
-//     else{
-//       console.log('响应错误状态:', res.statusCode);
-//       throw new Error('获取房票失败')
-//     }
-//   } catch (error) {
-//     throw new Error(errr.message)
-//   }
-// }
+async function getTicket(){
+  //获取请求
+  try {
+    const res= await new Promise((resolve,reject)=>{
+      wx.request({
+        url: 'http://localhost:3000/api/ticket',
+        method:'GET',
+        success:(response)=>{
+          resolve(response)
+        },
+        fail:(err)=>{
+          reject(err)
+        }
+      })
+    })
+    //成功
+    if(res.statusCode==200){
+      return res.data
+    }
+    //失败
+    else{
+      console.log('响应错误状态:', res.statusCode);
+      throw new Error('获取房票失败')
+    }
+  } catch (error) {
+    throw new Error(errr.message)
+  }
+}
 
 module.exports = {
   login,
@@ -212,5 +210,5 @@ module.exports = {
   getHousesCondition,
   getFilters,
   getHouseDetails,
-  // getTicket
+  getTicket
 };

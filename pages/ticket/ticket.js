@@ -1,3 +1,4 @@
+const { getTicket} =require("../../utils/request")
 Page({
   data: {
     tickets: [], // 初始化为空数组
@@ -6,45 +7,34 @@ Page({
   onLoad: function(options) {
     this.loadTicket()
   },
-
-
-  loadTicket: function() {
-    wx.request({
-      url: 'http://localhost:3000/api/ticket',
-      method: 'GET',
-      success: (response) => {
-        console.log('接受到后端的数据为', response.data);
-        if (response.statusCode == 200) {
-
-          const updatedTickets =response.data.map(item=>({//返回的是字面量对象用再包裹{}
-            ...item,
-            ContainerBackgroundColor: this.getContainerBackgroundColor(item.status),
-            CollectionUnitColor: this.getCollectionUnitColor(item.status),
-            StatusItemBackgroundColor:this.getStatusItemBackgroundColor(item.status),
-            AmountItemBackgroundColor:this.getAmountItemBackgroundColor(item.status),
-            labelItemColor:this.getLabelItemColor(item.status),
-            ValueItemColor:this.getValueItemColor(item.status),
-            DetailItemColor :this.getDetailItemColor(item.status),
-          })
-           )
-          this.setData({
-            tickets: updatedTickets
-          });
-          console.log('更新后的 tickets:', this.data.tickets);
-        } else {
-          wx.showToast({
-            title: '获取房票失败',
-            icon: 'error'
-          });
-        }
-      },
-      fail: (err) => {
-        wx.showToast({
-          title: '请求失败,服务器错误',
-          icon: 'error'
-        });
-      }
+//加载房票详情
+  loadTicket:async function() {
+    try {
+      //调用请求，加载房票详情
+    const tickets=await getTicket()
+    console.log("获取的房票详情为",tickets)
+      //获取成功
+    const updatedTickets =tickets.map(item=>({
+      ...item,
+      ContainerBackgroundColor: this.getContainerBackgroundColor(item.status),
+      CollectionUnitColor: this.getCollectionUnitColor(item.status),
+      StatusItemBackgroundColor:this.getStatusItemBackgroundColor(item.status),
+      AmountItemBackgroundColor:this.getAmountItemBackgroundColor(item.status),
+      labelItemColor:this.getLabelItemColor(item.status),
+      ValueItemColor:this.getValueItemColor(item.status),
+      DetailItemColor :this.getDetailItemColor(item.status),
+    }))
+    this.setData({
+      tickets:updatedTickets
     })
+    console.log("更新后房票详情为",tickets)
+    } catch (error) {
+      wx.showToast({
+        title: '获取房票失败',
+        icon:'error'
+      })
+      throw new Error("服务器错误，获取房票失败")
+    }
   },
   
   // 根据status返回容器背景颜色
