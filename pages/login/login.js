@@ -111,10 +111,15 @@ Page({
         icon: 'success',
       });
 
-      // 假设返回的数据中包含token，保存到本地
+      wx.setStorageSync('token', res.token);
+
+      // 存储用户信息
+      wx.setStorageSync('userInfo', { name, phone });
+  
+
       wx.setStorageSync('token', res.token);
       wx.navigateTo({
-        url: '/pages/index/index', // 登录成功后跳转到主页
+        url: '/pages/profile/profile', // 登录成功后跳转到主页
       });
     } catch (error) {
       wx.showToast({

@@ -1,0 +1,21 @@
+<view class="container">
+  <!-- 用户信息部分 -->
+  <view class="profile-header">
+    <view class="avatar">
+      <image src="/assets/images/profile/default_avatar.png" mode="aspectFill" />
+    </view>
+    <view class="user-info">
+      <text class="user-name">{{name}}</text>
+      <text class="user-phone">{{phone}}</text>
+    </view>
+    <view class="settings-icon">
+      <image src="/assets/images/profile/setting.png" mode="aspectFit" />
+    </view>
+  </view>
+
+  <!-- 空白部分 -->
+  <view class="spacer"></view>
+
+  <!-- 底部退出登录按钮 -->
+  <button class="logout-button" bindtap="handleLogout">退出登录</button>
+</view>

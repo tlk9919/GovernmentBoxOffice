@@ -1,5 +1,3 @@
-
-
 const BASE_URL = 'http://localhost:5000/api'; // 后端服务器地址
 
 // 发送验证码
@@ -11,9 +9,6 @@ async function sendVerificationCode(phone) {
         url: `${BASE_URL}/user/send-code`,  // 发送验证码的接口地址
         method: 'POST',
         data: { email: phone },  // 传递手机号给后端
-        header: {
-          'Content-Type': 'application/json',  // 设置请求头为 JSON 格式
-        },
         success: (response) => {
           resolve(response);  // 请求成功，返回响应数据
         },
@@ -42,9 +37,6 @@ async function login(data) {
         url: `${BASE_URL}/user/login`, // 登录接口地址
         method: 'POST',
         data: data,
-        header: {
-          'Content-Type': 'application/json',  // 设置请求头为 JSON 格式
-        },
         success: (response) => {
           resolve(response);  // 请求成功，返回响应数据
         },
@@ -69,7 +61,7 @@ async function getFilters() {
   try {
     const res = await new Promise((resolve, reject) => {
       wx.request({
-        url: `${BASE_URL}/filters`, 
+        url: `${BASE_URL}/filters/myFilter`, 
         method: 'GET',
         success: (response) => {
           resolve(response);  // 请求成功，返回响应数据
@@ -96,7 +88,7 @@ async function getHouses() {
   try {
     const res = await new Promise((resolve, reject) => {
       wx.request({
-        url: `${BASE_URL}/houses`,  
+        url: `${BASE_URL}/houses/myHouses`,  
         method: 'GET',
         success: (response) => {
           resolve(response);  
@@ -121,7 +113,8 @@ async function getHousesCondition(filters) {
   try {
     const res = await new Promise((resolve, reject) => {
       wx.request({
-        url: `${BASE_URL}/houses`,  // 房源接口地址
+        // url: `${BASE_URL}/houses/myHouses`,  
+        url: `${BASE_URL}/filters/myFilter`,  
         method: 'GET',
         data: filters,  // 传递筛选条件
         success: (response) => {
@@ -150,7 +143,7 @@ async function getHouseDetails(houseId){
  try {
   const res =await new Promise((resolve,reject)=>{
     wx.request({
-      url: `${BASE_URL}/houseDetail/${houseId}`,
+      url: `${BASE_URL}/houseDetail/myHouseDetail${houseId}`,
       method:'GET',
       success:(response)=>{
         console.log('请求成功的响应:', response.data);
@@ -180,7 +173,7 @@ async function getTicket(){
   try {
     const res= await new Promise((resolve,reject)=>{
       wx.request({
-        url: `${BASE_URL}/ticket`,
+        url: `${BASE_URL}/ticket/myTicket`,
         method:'GET',
         success:(response)=>{
           resolve(response)
@@ -210,7 +203,7 @@ async function getTicketDetail(ticketId){
 try {
   const res= await new Promise((resolve,reject)=>{
     wx.request({
-      url:  `${BASE_URL}/ticketDetail/${ticketId}`, 
+      url:  `${BASE_URL}/ticketDetail/myTicketDetail/${ticketId}`, 
       method:'GET',
       success:(response)=>{
         console.log('获取到的响应:', response);
@@ -237,6 +230,42 @@ try {
   //请求失败
 
 }
+
+//获取用户详情
+async function getProfile(){
+//请求Promise
+try {
+  const res=  await new Promise((resolve,reject)=>{
+    wx.request({
+      // url: `${BASE_URL}/profile/myProfile`,
+      url:'http://localhost:5000/api/profile/myProfile',
+      method:'GET',
+      success:(response)=>{
+        console.log('个人详情的响应',response.data)
+        resolve(response)
+      },
+      fail:(err)=>{
+        reject(err)
+      }
+    })
+  })
+  console.log('整个响应对象:', res);
+
+  // 打印 statusCode
+  console.log('响应的状态码:', res.statusCode);
+  //请求成功
+  if(res.statusCode===200){
+    console('个人详情请求成功数据为',res.data)
+  }
+  else{
+    console.log('个人详情响应错误状态:', res.statusCode);
+   }
+} catch (error) {
+  throw new Error('个人详情服务器错误，记载失败')
+}
+//请求失败
+
+}
 module.exports = {
   login,
   sendVerificationCode,
@@ -245,5 +274,6 @@ module.exports = {
   getFilters,
   getHouseDetails,
   getTicket,
-  getTicketDetail
+  getTicketDetail,
+  getProfile
 };

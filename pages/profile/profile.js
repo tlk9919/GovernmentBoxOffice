@@ -1,19 +1,34 @@
-// pages/profile/profile.js
-Page({
 
+const {getProfile}=require('../../utils/request')
+Page({
+  
   /**
    * 页面的初始数据
    */
   data: {
-
+    name: '',
+    phone: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-
+  onLoad: function () {
+    const userInfo = wx.getStorageSync('userInfo');
+    
+    if (userInfo) {
+      this.setData({
+        name: userInfo.name,
+        phone: userInfo.phone,
+      });
+    } else {
+      wx.showToast({
+        title: '未找到用户信息',
+        icon: 'none',
+      });
+    }
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

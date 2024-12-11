@@ -1,32 +1,26 @@
-async function getTicketDetail(ticketId) {
-  console.log('获取到的房票id', ticketId);
-  try {
-    // 发起请求并等待结果
-    const res = await new Promise((resolve, reject) => {
-      wx.request({
-        url: `${BASE_URL}/ticketDetail/${ticketId}`,
-        method: 'GET',
-        success: (response) => {
-          console.log('获取到的响应:', response);
-          resolve(response);  // 请求成功，返回数据
-        },
-        fail: (err) => {
-          console.log('请求失败:', err);
-          reject(err);  // 请求失败，返回错误
-        }
-      });
-    });
-
-    // 请求成功，检查状态码
-    if (res && res.statusCode === 200) {
-      console.log('请求成功的数', res.data);
-      return res.data;  // 返回数据
-    } else {
-      console.log('响应错误状态:', res.statusCode);
-      throw new Error('获取房票详情失败');
-    }
-  } catch (error) {
-    console.error('错误:', error);
-    throw new Error(error.message || '房票详情加载失败');
-  }
-}
+// "tabBar": {
+//   "color": "#7A7E83",  // 未选中的图标颜色
+//   "selectedColor": "#FF6600",  // 选中后的图标颜色
+//   "borderStyle": "black",  // tabBar 边框颜色
+//   "backgroundColor": "#ffffff",  // tabBar 背景颜色
+//   "list": [
+//     {
+//       "pagePath": "pages/home/home",  // 对应页面路径
+//       "text": "首页",  // 文字
+//       "iconPath": "assets/icons/home.png",  // 未选中时的图标路径
+//       "selectedIconPath": "assets/icons/home_selected.png"  // 选中时的图标路径
+//     },
+//     {
+//       "pagePath": "pages/order/order",  // 对应页面路径
+//       "text": "房票",  // 文字
+//       "iconPath": "assets/icons/order.png",  // 未选中时的图标路径
+//       "selectedIconPath": "assets/icons/order_selected.png"  // 选中时的图标路径
+//     },
+//     {
+//       "pagePath": "pages/profile/profile",  // 对应页面路径
+//       "text": "我的",  // 文字
+//       "iconPath": "assets/icons/profile.png",  // 未选中时的图标路径
+//       "selectedIconPath": "assets/icons/profile_selected.png"  // 选中时的图标路径
+//     }
+//   ]
+// }
