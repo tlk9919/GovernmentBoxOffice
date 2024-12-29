@@ -1,7 +1,7 @@
-# GovernmentBoxOffice
+# GoverBoxOfficeBackend 
 
 #### Description
-微信小程序房票程序
+政务票房后台管理系统
 
 #### Software Architecture
 Software architecture description
