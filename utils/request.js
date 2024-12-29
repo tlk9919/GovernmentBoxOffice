@@ -143,7 +143,7 @@ async function getHouseDetails(houseId){
  try {
   const res =await new Promise((resolve,reject)=>{
     wx.request({
-      url: `${BASE_URL}/houseDetail/myHouseDetail${houseId}`,
+      url: `${BASE_URL}/houseDetail/myHouseDetail/${houseId}`,
       method:'GET',
       success:(response)=>{
         console.log('请求成功的响应:', response.data);
